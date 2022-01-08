@@ -1,0 +1,262 @@
+<!Doctype html>
+<html lang="ko">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <!-- 구글폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+
+
+    <title>마이코딩리뷰</title>
+
+    <!-- style -->
+    <style type="text/css">
+        * {
+            font-family: "Stylish", sans-serif;
+        }
+
+        .wrap {
+            width: 900px;
+            margin: auto;
+            background-color: saddlebrown;
+        }
+
+        .first {
+            background-color: saddlebrown;
+        }
+
+        .jumbotron {
+            background-color: lightyellow;
+        }
+
+        .myitem{
+                    width: 400px;
+                    height: 300px;
+
+                   background-image: url("https://img.kr.news.samsung.com/kr/wp-content/uploads/2017/07/170621_%EC%84%B8%EC%83%81%EC%9D%84%EC%9E%87IT%EB%8A%94%EC%9D%B4%EC%95%BC%EA%B8%B0_%EC%BD%94%EB%94%A9%EC%9D%98%EB%B3%B8%EC%A7%88%EA%B3%BC%EB%AF%B8%EB%9E%98%EC%9D%B4%EB%AF%B8%EC%A7%8009.jpg");
+                   background-position: center;
+                   background-size: cover;
+             }
+
+        .search {
+            float: right;
+
+
+        }
+        .card-img-top{
+                      width:200px;
+                      margin:auto;
+                  }
+
+        .jumbotron {
+            margin: 30px auto;
+            width: 500px;
+
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            showArticles();
+        });
+
+        function openClose() {
+            if ($("#review-write").css("display") == "block") {
+                $("#review-write").hide();
+                $("#btn-post-box").text("리뷰 작성");
+            } else {
+                $("#review-write").show();
+                $("#btn-post-box").text("리뷰 닫기");
+            }
+        }
+
+        function postArticle() {
+            let url = $('#post-url').val()
+            let comment = $('#post-comment').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/memo",
+                data: {url_give: url, comment_give: comment},
+                success: function (response) { // 성공하면
+                    alert(response["msg"]);
+                    window.location.reload()
+                }
+            })
+        }
+
+        function showArticles() {
+            $.ajax({
+                type: "GET",
+                url: "/memo?sample_give=샘플데이터",
+                data: {},
+                success: function (response) {
+                    alert(response["msg"]);
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            showReview();
+        });
+
+        function makeReview() {
+            let title = $('#title').val()
+            let author = $('#author').val()
+            let review = $('#bookReview').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/review",
+                data: {title_give: title, author_give: author, review_give: review},
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.reload();
+                }
+            })
+        }
+
+        function showReview() {
+            $.ajax({
+                type: "GET",
+                url: "/review",
+                data: {},
+                success: function (response) {
+                    let reviews = response['all_reviews']
+                    for (let i = 0; i < reviews.length; i++) {
+                        let title = reviews[i]['title']
+                        let author = reviews[i]['author']
+                        let review = reviews[i]['review']
+
+                        let temp_html = `<tr>
+                                            <td>${title}</td>
+                                            <td>${author}</td>
+                                            <td>${review}</td>
+                                        </tr>`
+                        $('#reviews-box').append(temp_html)
+                    }
+                }
+            })
+        }
+    </script>
+
+</head>
+
+<body class="first">
+    <div class="jumbotron">
+            <h1 class="display-4">마이 코딩 리뷰</h1>
+            <div class = "myitem"></div>
+
+            <p>내가 들었던 코딩 강의들의 후기를 써주세요! 그리고 다른사람들이 추천한 강의의 리뷰를 읽으세요!</p>
+        <div class="search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+         </div>
+
+
+         <hr class="my-4"></div>
+
+
+    <div class="wrap">
+    <div id="review-write" class="form-post" style="display:none" class="card text-center">
+        <div class="card-header">
+            코딩강의 리뷰 작성하기!
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">다른 사람을 위해 리뷰를 작성해주세요</h5>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">제목</span>
+                </div>
+                <input type="text" class="form-control" id="title">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">강의</span>
+                </div>
+                <input type="text" class="form-control" id="author">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">분류</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>-- 분류를 선택하세요 --</option>
+                    <option value="1">HTML</option>
+                    <option value="2">CSS</option>
+                    <option value="3">C</option>
+                    <option value="4">C++</option>
+                    <option value="5">javaScript</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">리뷰</span>
+                </div>
+                <textarea class="form-control" id="bookReview"
+                          cols="30"
+                          rows="5" placeholder="140자까지 입력할 수 있습니다."></textarea>
+            </div>
+            <a href="#" class="btn btn-primary" onclick="makeReview()">리뷰작성</a>
+        </div>
+    </div>
+    <div>
+        <a onclick="openClose()" id="btn-post-box" type="button" href="#"
+           class="btn btn-primary">플러스 아이콘</a>
+    </div>
+
+    </div>
+
+    </div>
+
+    <div class="card-deck">
+        <div class="card">
+            <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HTML5_oval_logo.png/220px-HTML5_oval_logo.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">이 HTML강의는 좋다
+                   </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+    </div>
+
+
+</html>
