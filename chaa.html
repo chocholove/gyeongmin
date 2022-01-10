@@ -1,0 +1,430 @@
+<!Doctype html>
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <!-- 구글폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+
+
+    <title>마이코딩리뷰</title>
+
+    <!-- style -->
+    <style type="text/css">
+        * {
+            font-family: "Stylish", sans-serif;
+        }
+        .box{
+            font-size: 25px;
+        }
+        .card-header{
+            fong-size: 50px;
+        }
+        .backgrond{
+            background-color: #FFA247;
+            margin:auto;
+            width: 1100px;
+            padding-top: 30px;
+
+        }
+        .jumbotron {
+            padding:30px 32px 32px 32px;
+            background-color: #fffcf7;
+            margin:auto;
+            width: 500px;
+            text-align: center;
+        }
+
+        .review-box {
+            width: 900px;
+            margin: auto;
+            background-color: rgba(249,101,21,0.8);
+            border-radius: 15px;
+        }
+        /*마이코딩리뷰 호랑이 아이콘 & 타이틀*/
+        .myitem{
+            margin: auto;
+            display: inline-block;
+            background-position: center;
+            background-size: cover;
+             }
+        .myitem img {
+            width: 400px;
+            height: 400px;
+
+            position:relative;
+            border-radius: 50px;
+            margin:auto;
+            margin-bottom: 30px;
+        }
+        .myitem p{
+            position:relative;
+            top: -30px;
+
+        }
+
+
+        .card-img-top{
+                      width:200px;
+                      margin:auto;
+                  }
+
+        /* 리뷰 작성 버튼*/
+        .myButton {
+            box-shadow: inset 0px 1px 0px 0px #e07416;
+            background: linear-gradient(to bottom, #f58b0a 5%, #eb870e 100%);
+            background-color: #f58b0a;
+            border-radius: 6px;
+            border: 1px solid #eeb44f;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 18px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #cc9f52;
+            margin:0 auto;
+        }
+
+        .myButton:hover {
+            text-decoration:none;
+            background: linear-gradient(to bottom, #eb870e 5%, #f58b0a 100%);
+            background-color: #eb870e;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .site-connect {
+            background-color: rgba(249,101,21,0.8);
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            box-shadow: inset 0px 1px 0px 0px #e07416;
+            border-radius: 6px;
+            border: 1px solid #eeb44f;
+        }
+
+        .btn-save {
+            background-color: saddlebrown;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            box-shadow: inset 0px 1px 0px 0px #e07416;
+            border-radius: 6px;
+            border: 1px solid #eeb44f;
+        }
+
+        .wrap-card-deck{
+            background-color: #FFA247;
+            margin: 30px auto;
+            width: 900px;
+        }
+        .myitem{
+            color:brown;
+        }
+        .card{
+            width: 300px;
+            height:400px;
+            margin: auto;
+            float:left;
+        }
+        .cc{
+            color:white;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            showArticles();
+        });
+
+        function openClose() {
+            if ($("#review-write").css("display") == "block") {
+                $("#review-write").hide();
+                $("#btn-post-box").text("리뷰 작성");
+            } else {
+                $("#review-write").show();
+                $("#btn-post-box").text("리뷰 닫기");
+            }
+        }
+
+        function postArticle() {
+            let url = $('#post-url').val()
+            let comment = $('#post-comment').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/memo",
+                data: {url_give: url, comment_give: comment},
+                success: function (response) { // 성공하면
+                    alert(response["msg"]);
+                    window.location.reload()
+                }
+            })
+        }
+
+        function showArticles() {
+            $.ajax({
+                type: "GET",
+                url: "/memo?sample_give=샘플데이터",
+                data: {},
+                success: function (response) {
+                    alert(response["msg"]);
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            showReview();
+        });
+
+        function makeReview() {
+            let title = $('#title').val()
+            let author = $('#author').val()
+            let review = $('#bookReview').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/review",
+                data: {title_give: title, author_give: author, review_give: review},
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.reload();
+                }
+            })
+        }
+
+        function showReview() {
+            $.ajax({
+                type: "GET",
+                url: "/review",
+                data: {},
+                success: function (response) {
+                    let reviews = response['all_reviews']
+                    for (let i = 0; i < reviews.length; i++) {
+                        let title = reviews[i]['title']
+                        let author = reviews[i]['author']
+                        let review = reviews[i]['review']
+
+                        let temp_html = `<tr>
+                                            <td>${title}</td>
+                                            <td>${author}</td>
+                                            <td>${review}</td>
+                                        </tr>`
+                        $('#reviews-box').append(temp_html)
+                    }
+                }
+            })
+        }
+    </script>
+
+</head>
+<body>
+    <div class="backgrond">
+    <!--점보트론-->
+        <div class="jumbotron">
+            <div class="myitem">
+                <img src="../static/title-image.png">
+                    <div class="box">
+                    <p>내가 들었던 코딩 강의들의 후기를 써주세요! <br>다른사람들이 추천한 강의의 리뷰를 읽으세요!</p>
+                    </div>
+            </div>
+            <!--   리뷰작성 버튼   -->
+            <div>
+                <a onclick="openClose()" type="button" href="#" class="myButton">리뷰 작성</a>
+            </div>
+        </div>
+
+        <!--   리뷰 포스트   -->
+        <div class="review-box">
+            <div id="review-write" class="form-post" style="display:none" class="card text-center">
+                <div class="card-header cc"> 코딩강의 리뷰 작성하기!      </div>
+                <div class="card-body">
+                    <h5 class="card-title cc">다른 사람을 위해 리뷰를 작성해주세요</h5>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">강의 사이트 이름/강사 이름</span>
+                        </div>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">사이트 URL</span>
+                        </div>
+                        <input type="text" class="form-control" id="author">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">강의 분류</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>-- 분류를 선택하세요 --</option>
+                            <option value="1">HTML/CSS</option>
+                            <option value="2">JavaScript</option>
+                            <option value="3">Java</option>
+                            <option value="4">React/Vue.js</option>
+                            <option value="5">Node.js</option>
+                            <option value="6">jQuery</option>
+                            <option value="7">Spring</option>
+                            <option value="8">Python</option>
+                            <option value="9">C/C++</option>
+                            <option value="10">기타</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">리뷰 내용</span>
+                        </div>
+                        <textarea class="form-control" id="bookReview"
+                                  cols="30"
+                                  rows="5" placeholder="140자까지 입력할 수 있습니다."></textarea>
+                    </div>
+                    <p><a href="#" class="btn btn-primary btn-save" onclick="makeReview()">저장하기</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!--리뷰 카드 덱-->
+    <div class="wrap-card-deck">
+
+            <div class="card">
+                <img class="card-img-top"
+                     src="../static/vue_react.png"
+                     alt="Card image cap" >
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">이 HTML강의는 좋다
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
+                </div>
+                <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기기</a>
+
+
+
+            </div>
+            <div class="card">
+                <img class="card-img-top"
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HTML5_oval_logo.png/220px-HTML5_oval_logo.png"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">이 HTML강의는 좋다
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
+                </div>
+                <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기기</a>
+
+
+            </div>
+            <div class="card">
+                <img class="card-img-top"
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HTML5_oval_logo.png/220px-HTML5_oval_logo.png"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">이 HTML강의는 좋다
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
+                </div>
+                <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
+
+
+            </div>
+            <div class="card">
+                <img class="card-img-top"
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HTML5_oval_logo.png/220px-HTML5_oval_logo.png"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">이 HTML강의는 좋다
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
+                </div>
+                <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
+
+
+            </div>
+              <div class="card">
+                <img class="card-img-top"
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HTML5_oval_logo.png/220px-HTML5_oval_logo.png"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">이 HTML강의는 좋다
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
+                </div>
+                <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
+
+
+            </div>
+              <div class="card">
+                <img class="card-img-top"
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HTML5_oval_logo.png/220px-HTML5_oval_logo.png"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">이 HTML강의는 좋다
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
+                </div>
+                <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
+
+
+            </div>
+              <div class="card">
+                <img class="card-img-top"
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HTML5_oval_logo.png/220px-HTML5_oval_logo.png"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">이 HTML강의는 좋다
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
+                </div>
+                <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
+
+
+            </div>
+
+
+
+
+
+    </div>
+    </div>
+</body>
+</html>
