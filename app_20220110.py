@@ -19,7 +19,7 @@ def home():
 
 @app.route('/html_css')
 def html1():
-    return render_template('html.html')
+    return render_template('html_css.html')
 
 
 @app.route('/js')
