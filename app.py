@@ -94,63 +94,63 @@ def readReviews():
     return jsonify({'all_reviews': reviews})
 
 
-@app.route('/html_css', methods=['GET'])
+@app.route('/html_css_review', methods=['GET'])
 def listing():
-    html_css = list(db.coding.find({'lecture': 'HTML,CSS'}, {'_id': False}))
+    html_css = list(db.coding.find({'lecture': 'html'}, {'_id': False}))
     return jsonify({'html_css_reviews': html_css})
 
 
-@app.route('/js', methods=['GET'])
+@app.route('/js_review', methods=['GET'])
 def listing1():
     js = list(db.coding.find({'lecture': 'JavaScript'}, {'_id': False}))
     return jsonify({'js_reviews': js})
 
 
-@app.route('/java', methods=['GET'])
+@app.route('/java_review', methods=['GET'])
 def listing2():
-    java = list(db.coding.find({'lecture': 'JAVA'}, {'_id': False}))
+    java = list(db.coding.find({'lecture': 'Java'}, {'_id': False}))
     return jsonify({'java_reviews': java})
 
 
-@app.route('/react_vue', methods=['GET'])
+@app.route('/react_vue_review', methods=['GET'])
 def listing3():
     react_vue = list(db.coding.find({'lecture': 'React,Vue.js'}, {'_id': False}))
     return jsonify({'react_vue_reviews': react_vue})
 
 
-@app.route('/node', methods=['GET'])
+@app.route('/node_review', methods=['GET'])
 def listing4():
     node = list(db.coding.find({'lecture': 'Node.js'}, {'_id': False}))
     return jsonify({'node_reviews': node})
 
 
-@app.route('/jquery', methods=['GET'])
+@app.route('/jquery_review', methods=['GET'])
 def listing5():
     jquery = list(db.coding.find({'lecture': 'jQuery'}, {'_id': False}))
     return jsonify({'jquery_reviews': jquery})
 
 
-@app.route('/spring', methods=['GET'])
+@app.route('/spring_review', methods=['GET'])
 def listing6():
-    spring = list(db.coding.find({'lecture': 'spring'}, {'_id': False}))
+    spring = list(db.coding.find({'lecture': 'Spring'}, {'_id': False}))
     return jsonify({'spring_reviews': spring})
 
 
-@app.route('/python', methods=['GET'])
+@app.route('/python_review', methods=['GET'])
 def listing7():
-    python = list(db.coding.find({'lecture': 'python'}, {'_id': False}))
+    python = list(db.coding.find({'lecture': 'Python'}, {'_id': False}))
     return jsonify({'python_reviews': python})
 
 
-@app.route('/c_c', methods=['GET'])
+@app.route('/c_c_review', methods=['GET'])
 def listing8():
     c_c = list(db.coding.find({'lecture': 'C,C++'}, {'_id': False}))
     return jsonify({'c_c_reviews': c_c})
 
 
-@app.route('/etc', methods=['GET'])
+@app.route('/etc_review', methods=['GET'])
 def listing9():
-    etc = list(db.coding.find({'lecture': 'etc'}, {'_id': False}))
+    etc = list(db.coding.find({'lecture': 'ETC'}, {'_id': False}))
     return jsonify({'etc_reviews': etc})
 
 

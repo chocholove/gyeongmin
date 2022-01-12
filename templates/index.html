@@ -269,7 +269,7 @@
                                             </div>
                                             <a class="btn btn-primary site-connect" href="${url}" role="button">리뷰한 사이트 바로가기</a>
                                         </div>`
-                        $('#card-box').append(temp_html)
+                        $('#card-box').prepend(temp_html)
                     }
                 }
             })
@@ -370,7 +370,7 @@
                             </div>
                             <select class="custom-select" id="lecture">
                                 <option selected>-- 분류를 선택하세요 --</option>
-                                <option value="HTML,CSS">HTML/CSS</option>
+                                <option value="html">HTML/CSS</option>
                                 <option value="JavaScript">JavaScript</option>
                                 <option value="Java">Java</option>
                                 <option value="React,Vue.js">React/Vue.js</option>
@@ -548,7 +548,10 @@
                     </div>
                     <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
                 </div>
+                <div id="card-box">
+                </div>
             </div>
         </div>
+
     </body>
 </html>

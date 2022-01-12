@@ -240,10 +240,10 @@
 
             $.ajax({
                 type: "GET",
-                url: "/review",
+                url: "/python_review",
                 data: {},
                 success: function (response) {
-                    let reviews = response['all_reviews']
+                    let reviews = response['python_reviews']
                     for (let i = 0; i < reviews.length; i++) {
                         let title = reviews[i]['title']
                         let url = reviews[i]['url']
@@ -264,7 +264,7 @@
                                             </div>
                                             <a class="btn btn-primary site-connect" href="${url}" role="button">리뷰한 사이트 바로가기</a>
                                         </div>`
-                        $('#card-box').append(temp_html)
+                        $('#card-box').prepend(temp_html)
                     }
                 }
             })
@@ -391,104 +391,7 @@
 
     <!--리뷰 카드 덱-->
         <h2>Python</h2>
-        <div class="card">
-            <img class="card-img"
-                 src="../static/HTML,CSS.png"
-                 alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">이 HTML/CSS 강의는 좋다.
-                    어쩌구어쩌구어쩌구어쩌구어쩌겆뤼누어쩌구주구어쩌구어쩌구어쩌구어쩌구어쩌겆뤼누어쩌구주구어쩌구어쩌구어쩌구어쩌구어쩌겆뤼누어쩌구주구어쩌구어쩌구어쩌구어쩌구어쩌겆뤼누어쩌구주구
-                </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-            </div>
-            <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                 src="../static/JavaScript.png"
-                 alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">이 javascript강의는 좋다</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-            </div>
-            <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                 src="../static/JAVA.png"
-                 alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">이 java강의는 좋다
-                </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-            </div>
-            <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                 src="../static/React,Vue.js.png"
-                 alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">이 React/Vue.js강의는 좋다
-                </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-            </div>
-            <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                 src="../static/Node.js.png"
-                 alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">이 Node.js강의는 좋다
-                </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-            </div>
-            <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                 src="../static/jquery.png"
-                 alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">이 Jquery 강의는 좋다
-                </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-            </div>
-            <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                 src="../static/spring.png"
-                 alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">이 Spring강의는 좋다
-                </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-            </div>
-            <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-        </div>
+        <!--기본으로 뜨는 카드-->
         <div class="card">
             <img class="card-img"
                  src="../static/python.png"
@@ -503,34 +406,7 @@
             </div>
             <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
         </div>
-        <div class="card">
-            <img class="card-img"
-                 src="../static/C,C++.png"
-                 alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">이 C/C++강의는 좋다
-                </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-            </div>
-            <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                 src="../static/etc.png"
-                 alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">이 기타 강의는 좋다
-                </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-            </div>
-            <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-        </div>
+        <!--추가되는 카드-->
         <div id="card-box">
         </div>
     </div>
