@@ -126,7 +126,7 @@ def listing4():
 
 @app.route('/jquery', methods=['GET'])
 def listing5():
-    jquery = list(db.coding.find({'lecture': 'jquery'}, {'_id': False}))
+    jquery = list(db.coding.find({'lecture': 'jQuery'}, {'_id': False}))
     return jsonify({'jquery_reviews': jquery})
 
 
@@ -144,7 +144,7 @@ def listing7():
 
 @app.route('/c_c', methods=['GET'])
 def listing8():
-    c_c = list(db.coding.find({'lecture': 'c,c++'}, {'_id': False}))
+    c_c = list(db.coding.find({'lecture': 'C,C++'}, {'_id': False}))
     return jsonify({'c_c_reviews': c_c})
 
 
