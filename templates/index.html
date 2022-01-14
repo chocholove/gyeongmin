@@ -27,217 +27,12 @@
      <!-- 구글폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Gothic+Coding&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&family=Sunflower:wght@300&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 
     <title>마이코딩리뷰</title>
 
-    <!-- style -->
-    <style type="text/css">
-        * {
-          font-family: 'Sunflower', sans-serif;}
-
-        .review-box-title{
-            padding:12px 12px 12px 12px;
-            font-size: 25px;
-            color:white
-        }
-        .review-box-content{
-            padding:12px 12px 12px 8px;
-        }
-        .backgrond{
-            background-color: #FFA247;
-            margin: auto;
-            width: 1100px;
-            height:100vh;
-            display: table;
-        }
-
-        .jumbotron {
-            padding: 30px 32px 32px 32px;
-            background-color: #fffcf7;
-            margin: 15px 300px 15px 300px;
-            width: 500px;
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .review-box {
-            width: 900px;
-            margin: auto;
-            background-color: rgba(249, 101, 21, 0.8);
-            border-radius: 15px;
-            color: #fffcf7;
-        }
-
-        /*마이코딩리뷰 호랑이 아이콘 & 타이틀*/
-        .myitem {
-            margin: auto;
-            display: inline-block;
-            background-position: center;
-            background-size: cover;
-        }
-
-        .myitem img {
-            width: 400px;
-            height: 400px;
-            margin: auto;
-            position: relative;
-        }
-
-        .myitem p {
-            position: relative;
-            top: -30px;
-        }
-
-
-        /* 리뷰 작성 버튼*/
-        .myButton {
-            box-shadow: inset 0px 1px 0px 0px #e07416;
-            background: linear-gradient(to bottom, #f58b0a 5%, #eb870e 100%);
-            background-color: #f58b0a;
-            border-radius: 6px;
-            border: 1px solid #eeb44f;
-            display: inline-block;
-            cursor: pointer;
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: bold;
-            padding: 6px 18px;
-            text-decoration: none;
-            text-shadow: 0px 1px 0px #cc9f52;
-            margin: 0 auto;
-        }
-
-        .myButton:hover {
-            text-decoration: none;
-            background: linear-gradient(to bottom, #eb870e 5%, #f58b0a 100%);
-            background-color: #eb870e;
-        }
-
-        .myButton:active {
-            position: relative;
-            top: 1px;
-        }
-
-        .site-connect {
-            background-color: rgba(249, 101, 21, 0.8);
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
-            box-shadow: inset 0px 1px 0px 0px #e07416;
-            border-radius: 6px;
-            border: 1px solid #eeb44f;
-        }
-
-        .btn-save {
-            background-color: saddlebrown;
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
-            box-shadow: inset 0px 1px 0px 0px #e07416;
-            border-radius: 6px;
-            border: 1px solid #eeb44f;
-        }
-
-        /*네비게이션*/
-        .nav-menu li {
-            list-style-type: none;
-            float: left;
-            margin-left: 35px;
-            color: #fffcf7;
-            font-size: 20px;
-        }
-        .nav-menu li a{
-            text-decoration-line: none;
-            color: #fffcf7;
-        }
-
-        /*카드*/
-        .card {
-            width: 300px;
-            height: 400px;
-            margin-top: 15px;
-            float: left;
-            left: 9%;
-        }
-
-        .card-text {
-
-            display: inline-block;
-            width: 300px;
-            height: 100px;
-            overflow: auto;
-        }
-
-        .card-text::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        .card-text::-webkit-scrollbar-thumb {
-            background-color: #2f3542;
-            border-radius: 10px;
-            background-clip: padding-box;
-            border: 2px solid transparent;
-        }
-
-        .card-text::-webkit-scrollbar-track {
-            background-color: grey;
-            border-radius: 10px;
-            box-shadow: inset 0px 0px 5px white;
-        }
-        .card-footer {
-            padding: 5px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: 300px;
-            height: 50px;
-        }
-
-        .card-img {
-            width: 200px;
-            height: 200px;
-            margin: auto;
-        }
-        .card-body {
-            padding: 5px;
-            height: 200px;
-        }
-
-    {#  좋아요  #}
-        .likes{
-            display:flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .likes-container{
-          margin-left: 220px;
-        }
-        .likes-box{
-            background-color: #fffcf7;
-            border:2px solid #FFA247;
-            padding: 2px;
-            border-radius: 2px;
-            color: #FFA247;
-            font-size: 15px;
-        }
-        .heart::before{
-            content:"♡";
-        }
-        .likes-box:hover{
-            background-color:#FFA247;
-            color: #fffcf7;
-            border:2px solid #FFA247;
-            padding: 2px;
-            border-radius: 2px;
-        }
-        .heart:hover::before{
-            content:"♥";
-        }
-
-
-    </style>
+  <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
 
     <script>
         $(document).ready(function () {
@@ -294,11 +89,13 @@
                                                  alt="Card image cap">
                                                 <div class="likes">
                                                     <div class="likes-container">
-                                                        <button class="likes-box heart"> likes</button>
+                                                        <button style="display: block" onclick="change();" id="bad" class="likes-box heart">
+                                                            <i class="fa fa-thumbs-o-up" aria-hidden="true">♡likes</i></button>
+                                                        <button style="display: none" onclick="change();" id="good" class="likes-box heart">
+                                                            <i class="fa fa-thumbs-up" aria-hidden="true">♥likes</i></button>
                                                     </div>
                                                 </div>
                                             <div class="card-body">
-                                                <h5 class="card-title"></h5>
                                                 <p class="card-text">${title}</p>
                                             </div>
                                             <div class="card-footer">
@@ -316,6 +113,25 @@
 
         for (let para of paras) {
             para.scroll(0, 100);
+        }
+
+        var state = ["block", "none"];
+        var i = 0;
+        var j = 1;
+
+        function change() {
+            if (i >= state.length) {
+                i = 0;
+            }
+            var b = document.getElementById("good");
+            b.style.display = state[i];
+            i++;
+            var d = document.getElementById("bad");
+            d.style.display = state[j];
+            j--
+            if (j < 0) {
+                j = 1;
+            }
         }
 
     </script>
@@ -440,10 +256,12 @@
                     <img class="card-img"
                          src="../static/html.png"
                          alt="Card image cap">
-                    <!--좋아요 버튼-->
                     <div class="likes">
                         <div class="likes-container">
-                            <button class="likes-box heart"> likes</button>
+                            <button style="display: block" onclick="change();" id="bad" class="likes-box heart">
+                                <i class="fa fa-thumbs-o-up" aria-hidden="true">♡likes</i></button>
+                            <button style="display: none" onclick="change();" id="good" class="likes-box heart">
+                                <i class="fa fa-thumbs-up" aria-hidden="true">♥likes</i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -457,140 +275,7 @@
                     </div>
                     <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
                 </div>
-                <!--카드2-->
-                <div class="card">
-                    <img class="card-img"
-                         src="../static/javascript.png"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">이 javascript강의는 좋다</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-                    </div>
-                    <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-                </div>
-                <!--카드3-->
-                <div class="card">
-                    <img class="card-img"
-                         src="../static/java.png"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">이 java강의는 좋다
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-                    </div>
-                    <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-                </div>
-                <!--카드4-->
-                <div class="card">
-                    <img class="card-img"
-                         src="../static/vue_react.png"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">이 React/Vue.js강의는 좋다
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-                    </div>
-                    <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-                </div>
-                <!--카드5-->
-                <div class="card">
-                    <img class="card-img"
-                         src="../static/nodejscript.jpg"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">이 Node.js강의는 좋다
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-                    </div>
-                    <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-                </div>
-                <!--카드6-->
-                <div class="card">
-                    <img class="card-img"
-                         src="../static/jquery.png"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">이 Jquery 강의는 좋다
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-                    </div>
-                    <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-                </div>
-                <!--카드7-->
-                <div class="card">
-                    <img class="card-img"
-                         src="../static/spring.png"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">이 Spring강의는 좋다
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-                    </div>
-                    <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-                </div>
-                <!--카드8-->
-                <div class="card">
-                    <img class="card-img"
-                         src="../static/python.jpg"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">이 python강의는 좋다
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-                    </div>
-                    <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-                </div>
-                <!--카드9-->
-                <div class="card">
-                    <img class="card-img"
-                         src="../static/C++.png"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">이 C/C++강의는 좋다
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-                    </div>
-                    <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-                </div>
-                <!--카드10-->
-                <div class="card">
-                    <img class="card-img"
-                         src="../static/etc.png"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">이 기타 강의는 좋다
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">어쩌구 선생님의 강의가 좋았다.</small>
-                    </div>
-                    <a class="btn btn-primary site-connect" href="#" role="button">리뷰한 사이트 바로가기</a>
-                </div>
+
                 <div id="card-box">
                 </div>
             </div>
