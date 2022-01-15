@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=">
+    <title>마이코딩 회원가입</title>
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: -webkit-linear-gradient(to right, #ff9068, #fd746c);
+            background: linear-gradient(to right, #ff9068, #fd746c);
+            D : 0%, #B721FF 100%;
+        }
+
+        .Login_Form {
+            width: 400px;
+            background-color: #f1f1f1;
+            height: 800px;
+            padding: 80px 40px;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%)
+        }
+
+        .Login_Form h1 {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .txtb {
+            border-bottom: 2px solid #adadad;
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .txtb input {
+            font-size: 15px;
+            color: #333;
+            width: 100%;
+            border: none;
+            padding: 0 5px;
+            height: 40px;
+            outline: none;
+        }
+
+        .loginbt {
+            display: block;
+            width: 100%;
+            height: 50px;
+            border: none;
+            background: -webkit-linear-gradient(to right, #ff9068, #fd746c);
+            background: linear-gradient(120deg, #ff9068, #fd746c);
+            border-radius: 10px;
+            background-size: 200%;
+            border-color: white;
+            color: #fff;
+            outline: none;
+            cusor: pointer;
+            transition: .5s;
+        }
+
+        .loginbt:hover {
+            background-position: right;
+        }
+
+        .bottom-text {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .bottom-text a {
+            color: #F15F79;
+        }
+
+        .myitem {
+            margin-top: -90px;
+            display: inline-block;
+            background-position: center;
+        }
+
+        .myitem img {
+            width: 350px;
+            height: 350px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="Login_Form">
+        <div class="myitem">
+            <img src="../static/title-image.png">
+        </div>
+        <h1>LOGIN</h1>
+        <div class='txtb'><input type="text" placeholder='아이디를 입력해주세요.'>
+            <span data-placeholder='Username'></span>
+        </div>
+
+        <div class="txtb">
+            <input type="password" placeholder='비밀번호를 입력해주세요.'>
+            <span data-placeholder='Password'></span>
+        </div>
+
+        <input type='submit' class='loginbt' value='Login'>
+        <div class="bottom-text"> 아이디가 없으세요? <a herf='#'> 회원가입하기</a>
+        </div>
+    </div>
+</form>
+</body>
+</html>
