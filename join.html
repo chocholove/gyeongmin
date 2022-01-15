@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <script src="http://kit.fontawesome.com/8c58089f6a.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="joinForm.js"></script>
+    <script src="../jquery=3.5.1.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: -webkit-linear-gradient(to right, #ff9068, #fd746c);
+            background: linear-gradient(to right, #ff9068, #fd746c);
+            D 0%, #B721FF 100%);
+        }
+
+        .join-form {
+
+            width: 800px;
+            background-color: #f1f1f1;
+            height: 800px;
+            padding: 40px 40px;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%)
+        }
+
+        * {
+            font-family: 'Jua', snas-serif;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+        }
+
+        input, #address {
+            border: 0;
+            border-bottom: 2px solid #cc9f52;
+            width: 130px;
+        }
+
+        .fontcolor {
+            color: gray;
+            font-size: 17px;
+            font-weight: bold;
+            width: 100px;
+        }
+
+        .button {
+            background-color: #eeb44f;
+            border: 2px solid #f58b0a;
+            padding: 16px 32px;
+        }
+
+        .button:hover {
+            background-color: #cc9f52;
+        }
+    </style>
+
+    <script>
+
+        $(function () {
+            $("#userid").keyup(function () {
+                idCheck();
+            });
+            $("#userPw").keyup(function () {
+                pwCheck();
+            });
+            $("#checkPw").keyup(function () {
+                checkpwsame();
+            });
+            $("#emailSel").change(function () {
+                emailSelect();
+            });
+            $("#apply").click(function () {
+                userinfo();
+            });
+            $("#pw1").mousedown(function () {
+                hidepw1();
+                $("#pw1").addClass("far fa-eye").removeClass("fas fa-eye-slash");
+            }).mouseup(function () {
+                showpw1();
+                $("#pw1").addClass("fas fa-eye-slash").removeClass("far fa-eye");
+            })
+            $("#pw2").mousedown(function () {
+                hidepw2();
+                $("#pw2").addClass("far fa-eye").removeClass("fas fa-eye-slash");
+            }).mouseup(function () {
+                showpw2();
+                $("#pw2").addClass("fas fa-eye-slash").removeClass("far fa-eye");
+            })
+        });
+
+        function idCheck() {
+            var id = $("#userid").val();
+            if (id.length == 0) {
+                $("#idResult").css("color", "red").text("아이디는 필수입니다.");
+            } else if (id.length < 4 || id.length > 10) {
+                $("#idResult").css("color", "red").text("아이디의 길이가 맞지않습니다.");
+            } else if (id.length >= 4 && id.length <= 10) {
+                $("#idResult").css("color", "green").text("Good");
+            }
+        }
+
+        function pwCheck() {
+            var id = $("#userPw").val();
+            if (id.length == 0) {
+                $("#pwResult").css("color", "red").text("비밀번호는 필수입니다.");
+            } else if (id.length < 8 || pw.length > 16) {
+                $("#pwResult").css("color", "red").text("비밀번호의 길이가 맞지않습니다.");
+            } else if (id.length >= 8 && pw.length <= 16) {
+                $("#pwResult").css("color", "green").text("Good");
+            }
+        }
+
+        function checkpwsame() {
+            var userpw = $("#userPw").val();
+            var checkpw = $("#checkpw").val();
+            if (userpw == checkpw) {
+                $("#checkresult").css("color", "green").text("비밀번호가 일치합니다.");
+            } else {
+                $("#pwResult").css("color", "red").text("비밀번호가 일치하지 않습니다.");
+            }
+        }
+
+        function emailSelect() {
+            var email = $("#emailSel").val();
+            $("#inputEmail").val(email);
+        }
+
+        function hidepw1() {
+            var id = document.querySelector("#userPw");
+            if (id.type === "password") {
+                id.type = "text";
+            }
+        }
+
+        function hidepw2() {
+            var input = document.querySelector("#checkPw");
+            if (input.type === "password") {
+                input.type = "text";
+            }
+        }
+
+        function showpw1() {
+            var id = document.querySelector("#userPw");
+            if (id.type === "text") {
+                id.type = "password";
+            }
+        }
+
+        function showpw2() {
+            var input = document.querySelector("#checkPw");
+            if (input.type === "text") {
+                input.type = "password";
+            }
+        }
+
+        function userinfo() {
+            var Id = "아이디 : " + $("#userid").val();
+            var password = "비밀번호 : " + $("#userpw").val();
+            var name = "이름 : " + $("#name").val();
+            var birth = "생년월일 : " + $("#birth").val();
+            var email = "이메일 : " + $("#email").val();
+            +" @ " + $("#inputEmail").val();
+            var add = "주소 : " + $("#sample6_address").val();
+            +"  " + $("#sample6_detailAddress").val();
+            var text = Id + "|n" + password + "|n" + name + "|n" + birth + "|n" + email + "|n" + add;
+            alert(text);
+
+        }
+
+        function Getinfo() {
+            let id = $("#userid").val();
+            let password = $("#userpw").val();
+            let name = $("#name").val();
+            let birth = $("#birth").val();
+            let email = $("#email").val();
+            let email2 = $("#inputEmail").val()
+            $.ajax({
+                type: "POST",
+                url: "/join",
+                data: {id_give: id, password_give: password, name_give: name, birth_give: birth, email_give: email},
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.reload();
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div class="join-form">
+    <h2>회원가입</h2>
+    <table>
+        <tr>
+            <td><i class="fas fa-id-card"></i></td>
+            <td class="fontcolor">아이디</td>
+            <td><input type="text" name="id" placeholder="4~10자리" id="userid"><span id="idResult"></span></td>
+        </tr>
+        <tr>
+            <td><i class="fas fa-key"></i></td>
+            <td class="fontcolor">비밀번호</td>
+            <td><input type="password" name="password" placeholder="8~16자리" id="userPw"></td>
+        </tr>
+        <tr>
+            <td><i class="fas fa-check-circle"></i></td>
+            <td class="fontcolor">비밀번호확인</td>
+            <td><input type="password" name="checkPw" id="checkPw"><i class="fas fa=eye-slash" id="pw2"></i><span
+                    id="checkresult"></span></td>
+        </tr>
+        <tr>
+            <td><i class="fas fa-user-circle"></i></td>
+            <td class="fontcolor">이름</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td><i class="fas fa-birthday-cake"></i></td>
+            <td class="fontcolor">생년월일</td>
+            <td><input type="date" id="birth"></td>
+        </tr>
+        <tr>
+            <td><i class="fas fa-envelope"></i></td>
+            <td class="fontcolor">이메일</td>
+            <td><input type="text" id="email">@<input type="text" id="inputEmail"> <select name="email" id="emailSel">
+                <option value="">직접입력</option>
+                <option value="naver.com">naver.com</option>
+                <option value="daum.net">duam.net</option>
+                <option value="gmail.com">gmail.com</option>
+            </select></td>
+            <td colspan="3" style="text-align: center;">
+                <button class="button" onclick = "Getinfo()" id="apply">회원가입</button>
+            </td>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>
