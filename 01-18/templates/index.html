@@ -1,0 +1,421 @@
+<!Doctype html>
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>마이코딩리뷰</title>
+    <link rel="icon" type="image/png" href="static/logo.png" />
+
+    <style>
+    /* Global */
+    @font-face {
+        font-family: 'Pretendard-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+    :root {
+
+      /* Color */
+      --color-white: #ffffff;
+      --color-light-white: #eeeeee;
+      --color-dark-white: #bdbdbd;
+      --color-orange:#FFA247;
+      --color-dark-purple: #836fa9;
+      --color-light-purple: #e6ceff;
+      --color-dark-grey: #4d4d4d;
+      --color-grey: #616161;
+      --color-light-grey: #7c7979;
+      --color-blue: #2B416A;
+      --color-yellow: #fff7d1;
+      --color-black: #000000;
+
+      /* Font size */
+      --font-large: 40px;
+      --font-medium: 26px;
+      --font-regular: 18px;
+      --font-small: 16px;
+      --font-micro: 14px;
+
+      /* Font weight */
+      --weight-bold: 700;
+      --weight-semi-bold: 600;
+      --weight-regular: 400;
+
+      /* Size */
+      --size-border-radius: 4px;
+    }
+
+    /* Universal tags */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      cursor: default;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    /* Typography */
+
+    h1 {
+      font-size: var(--font-large);
+      font-weight: var(--weight-bold);
+      color: var(--color-black);
+      margin: 16px 0px;
+    }
+
+    h2 {
+      font-size: var(--font-medium);
+      font-weight: var(--weight-semi-bold);
+      color: var(--color-black);
+      margin: 8px 0;
+    }
+
+    h3 {
+      font-size: var(--font-regular);
+      font-weight: var(--weight-semi-bold);
+      color: var(--color-black);
+      margin: 8px 0;
+    }
+
+    p {
+      font-size: var(--font-regular);
+      font-weight: var(--weight-regular);
+      color: var(--color-black);
+      margin: 4px 0;
+    }
+    a{
+      text-decoration-color:#FFA247;
+    }
+
+    /* Navbar */
+    #mynavbar {
+      display: flex;
+      justify-content: space-between;
+      background-color: var(--color-white);
+      align-items: center;
+      color: var(--color-black);
+      padding: 16px;
+      height: 120px;
+
+    }
+    .mynavbar__menu {
+      display: flex;
+    }
+    .mynavbar__logo {
+      font-size: var(--font-large);
+      font-weight: var(--weight-semi-bold);
+    }
+    .mynavbar__logo a{
+        font-size: var(--font-medium);
+        color: var(--color-dark-grey);
+        text-decoration: none;
+    }
+    .mynavbar__menu__item {
+      color:var(--color-black);
+      font-size: var(--font-medium);
+      padding: 8px 12px;
+      margin: 0 4px;
+      cursor: pointer;
+    }
+    .mynavbar__menu__item:hover {
+      color:var(--color-orange);
+      font-size: var(--font-medium);
+    }
+    .mynavbar__menu a{
+        font-size: var(--font-regular);
+        color:var(--color-dark-grey);
+        text-decoration: none;
+    }
+    .mynavbar__menu a:hover{
+        color:var(--color-blue);}
+    .banner {
+    position: relative;
+    line-height: 0;
+    }
+    .banner__img{
+        position: relative;
+        height: 300px;
+        width: 100%;
+    }
+    .banner__img h1{
+        font-size: 50px;
+        position: absolute;
+        color: white;
+        top:40px;
+        left: 180px;
+    }
+    .banner__img h2{
+        font-size: 40px;
+        position: absolute;
+        color: white;
+        top:140px;
+        left: 500px;
+    }
+    .banner__img h3{
+        font-size: 40px;
+        position: absolute;
+        color: white;
+        top:200px;
+        left: 750px;
+    }
+
+
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#card-box').empty();
+            readReview();
+        });
+
+        function openClose() {
+            if ($("#review-write").css("display") == "block") {
+                $("#review-write").hide();
+                $("#btn-post-box").text("리뷰 작성");
+            } else {
+                $("#review-write").show();
+                $("#btn-post-box").text("리뷰 닫기");
+            }
+        }
+
+        function GetReview() {
+            let title = $('#title').val()
+            let url = $('#url').val()
+            let review = $('#review').val()
+            let lecture = $('#lecture').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/review",
+                data: {title_give: title, url_give: url, review_give: review, lecture_give: lecture},
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.reload();
+
+                }
+            })
+        }
+
+        function readReview() {
+
+            $.ajax({
+                type: "GET",
+                url: "/review",
+                data: {},
+                success: function (response) {
+                    let reviews = response['all_reviews']
+                    for (let i = 0; i < reviews.length; i++) {
+                        let title = reviews[i]['title']
+                        let url = reviews[i]['url']
+                        let review = reviews[i]['review']
+                        let lecture = reviews[i]['lecture']
+
+
+                        let temp_html = `<div class="card">
+                                            <img class="card-img"
+                                                 src="../static/${lecture}.png"
+                                                 alt="Card image cap">
+                                            <div class="card-body">
+                                                <p class="card-text">${title}</p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <small class="text-muted">${review}</small>
+                                            </div>
+                                            <a class="btn btn-primary site-connect" href="${url}" role="button">리뷰한 사이트 바로가기</a>
+                                        </div>`
+                        $('#card-box').append(temp_html)
+                    }
+                }
+            })
+        }
+
+        const paras = document.querySelectorAll("p");
+
+        for (let para of paras) {
+            para.scroll(0, 100);
+        }
+
+        var state = ["block", "none"];
+        var i = 0;
+        var j = 1;
+
+        function change() {
+            if (i >= state.length) {
+                i = 0;
+            }
+            var b = document.getElementById("good");
+            b.style.display = state[i];
+            i++;
+            var d = document.getElementById("bad");
+            d.style.display = state[j];
+            j--
+            if (j < 0) {
+                j = 1;
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <!--로고-->
+   <nav id="mynavbar">
+        <div class="mynavbar__logo">
+            <img src="static/logo.png">
+            <a href="#" class="a__color">마이 코딩 리뷰</a>
+        </div>
+       <div class="mynavbar__menu">
+           <ul class="mynavbar__menu">
+               <li class="mynavbar__menu__item">
+                   <a href="/html_css" class="a__color">HTML/CSS</a>
+               </li>
+               <li class="mynavbar__menu__item">
+                   <a href="/js" class="a__color">JavaScript</a>
+               </li>
+               <li class="mynavbar__menu__item">
+                   <a href="/java" class="a__color">Java</a>
+               </li>
+               <li class="mynavbar__menu__item">
+                   <a href="/react_vue" class="a__color">React/Vue.js</a>
+               </li>
+               <li class="mynavbar__menu__item">
+                   <a href="/node" class="a__color">Node.js</a>
+               </li>
+               <li class="mynavbar__menu__item">
+                   <a href="/jquery" class="a__color">jQuery</a>
+               </li>
+               <li class="mynavbar__menu__item">
+                   <a href="/spring" class="a__color">Spring</a>
+               </li>
+               <li class="mynavbar__menu__item">
+                   <a href="/python" class="a__color">Python</a>
+               </li>
+               <li class="mynavbar__menu__item">
+                   <a href="/c_c" class="a__color">C/C++</a>
+               </li>
+               <li class="mynavbar__menu__item">
+                   <a href="/etc" class="a__color">기타</a>
+               </li>
+           </ul>
+       </div>
+   </nav>
+   <div class="banner">
+       <div id="carouselExampleIndicators" class="carousel slide banner__img" data-ride="carousel">
+           <ol class="carousel-indicators">
+               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+           </ol>
+           <div class="carousel-inner">
+               <div class="carousel-item active banner__img">
+                   <img src="static/banner1.png" class="d-block w-100" alt="banner1">
+                   <h1>"마이코딩리뷰"와 함께</h1>
+                   <h2>🐯 배우고 나누세요!</h2>
+                   <h3>우리의 시간은 소중하니까💖</h3>
+               </div>
+               <!--
+               <div class="carousel-item">
+                   <img src="static/banner2.png" class="d-block w-100" alt="banner2">
+               </div>-->
+           </div>
+           </button>
+       </div>
+   </div>
+   <div class="review">
+
+   </div>
+            <!--점보트론-->
+            <div class="jumbotron">
+                <div class="myitem">
+                    <img src="../static/title-image.png">
+                    <div class="box">
+                        <p>내가 들었던 코딩 강의들의 후기를 써주세요! <br>다른사람들이 추천한 강의의 리뷰를 읽으세요!</p>
+                    </div>
+                </div>
+                <!--   리뷰작성 버튼   -->
+                <div>
+                    <a onclick="openClose()" type="button" href="#" class="myButton">리뷰 작성</a>
+                </div>
+            </div>
+
+            <!--   리뷰 포스트   -->
+            <div class="review-box">
+                <div id="review-write" class="form-post" style="display:none" class="card text-center">
+                    <div class="review-box-title"> 코딩강의 리뷰 작성하기!</div>
+                    <div class="card-body">
+                        <h5 class="review-box-content">다른 사람을 위해 리뷰를 작성해주세요</h5>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">리뷰 제목</span>
+                            </div>
+                            <input type="text" class="form-control" id="title">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">사이트 URL</span>
+                            </div>
+                            <input type="text" class="form-control" id="url">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text">강의 분류</label>
+                            </div>
+                            <select class="custom-select" id="lecture">
+                                <option selected>-- 분류를 선택하세요 --</option>
+                                <option value="html">HTML/CSS</option>
+                                <option value="JavaScript">JavaScript</option>
+                                <option value="Java">Java</option>
+                                <option value="React,Vue.js">React/Vue.js</option>
+                                <option value="Node.js">Node.js</option>
+                                <option value="jQuery">jQuery</option>
+                                <option value="Spring">Spring</option>
+                                <option value="Python">Python</option>
+                                <option value="C,C++">C/C++</option>
+                                <option value="ETC">기타</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">리뷰 내용</span>
+                            </div>
+                            <textarea class="form-control" id="review"
+                                      cols="30"
+                                      rows="5" placeholder="140자까지 입력할 수 있습니다."></textarea>
+                        </div>
+                        <p><a href="#" class="btn btn-primary btn-save" onclick="GetReview()">저장하기</a></p>
+                    </div>
+                </div>
+            </div>
+
+        <!--리뷰 카드 덱-->
+
+    </body>
+</html>
